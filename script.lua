@@ -11,10 +11,10 @@ CleanUI("WindUI")
 CleanUI("FixMenuMobilePC")
 local WindUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/thienmf-rgb/NoNoDev/refs/heads/main/main.lua"))();
 local Window = WindUI:CreateWindow({
-    Title = "",
-    Icon = "",
-    Author = "",
-    Folder = "",
+    Title = " ",
+    Icon = " ",
+    Author = " ",
+    Folder = " ",
     Size = UDim2.fromOffset(550, 300),
     Transparent = true,
     Theme = "Dark",
@@ -39,7 +39,7 @@ OpenButton.BackgroundTransparency = 0.4
 OpenButton.Position = UDim2.new(0, 5, 0.4, 0)
 OpenButton.Size = UDim2.new(0, 50, 0, 50)
 OpenButton.Font = Enum.Font.GothamBold
-OpenButton.Text = ""
+OpenButton.Text = " "
 OpenButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 OpenButton.TextSize = 10
 OpenButton.Draggable = true
@@ -59,110 +59,110 @@ end)
 
 local Tabs = {
     InfoTab = Window:Tab({
-        Title = "",
-        Icon = "",
-        Desc = ""
+        Title = " ",
+        Icon = " ",
+        Desc = " "
     }),
     MainDivider = Window:Divider(),
     MainTab = Window:Tab({
-        Title = "",
-        Icon = "",
-        Desc = ""
+        Title = " ",
+        Icon = " ",
+        Desc = " "
     }),
     OthersTab = Window:Tab({
-        Title = "",
-        Icon = "",
-        Desc = ""
+        Title = " ",
+        Icon = " ",
+        Desc = " "
     }),
     ItemsTab = Window:Tab({
-        Title = "",
-        Icon = "",
-        Desc = ""
+        Title = " ",
+        Icon = " ",
+        Desc = " "
     }),
     SettingsTab = Window:Tab({
-        Title = "",
-        Icon = "",
-        Desc = ""
+        Title = " ",
+        Icon = " ",
+        Desc = " "
     }),
     PlayerDivider = Window:Divider(),
     LocalPlayerTab = Window:Tab({
-        Title = "",
-        Icon = "",
-        Desc = ""
+        Title = " ",
+        Icon = " ",
+        Desc = " "
     }),
     StatsTab = Window:Tab({
-        Title = "",
-        Icon = "",
-        Desc = ""
+        Title = " ",
+        Icon = " ",
+        Desc = " "
     }),
     SeaDivider = Window:Divider(),
     SeaEventTab = Window:Tab({
-        Title = "",
-        Icon = "",
-        Desc = ""
+        Title = " ",
+        Icon = " ",
+        Desc = " "
     }),
     SeaStackTab = Window:Tab({
-        Title = "",
-        Icon = "",
-        Desc = ""
+        Title = " ",
+        Icon = " ",
+        Desc = " "
     }),
     SeaSettingsTab = Window:Tab({
-        Title = "",
-        Icon = "",
-        Desc = ""
+        Title = " ",
+        Icon = " ",
+        Desc = " "
     }),
     AutoDivider = Window:Divider(),
     DragonDojoTab = Window:Tab({
-        Title = "",
-        Icon = "",
-        Desc = ""
+        Title = " ",
+        Icon = " ",
+        Desc = " "
     }),
     RaceTab = Window:Tab({
-        Title = "",
-        Icon = "",
-        Desc = ""
+        Title = " ",
+        Icon = " ",
+        Desc = " "
     }),
     CombatDivider = Window:Divider(),
     CombatTab = Window:Tab({
-        Title = "",
-        Icon = "",
-        Desc = ""
+        Title = " ",
+        Icon = " ",
+        Desc = " "
     }),
     RaidTab = Window:Tab({
-        Title = "",
-        Icon = "",
-        Desc = ""
+        Title = " ",
+        Icon = " ",
+        Desc = " "
     }),
     EspTab = Window:Tab({
-        Title = "",
-        Icon = "",
-        Desc = ""
+        Title = " ",
+        Icon = " ",
+        Desc = " "
     }),
     TeleportTab = Window:Tab({
-        Title = "",
-        Icon = "",
-        Desc = ""
+        Title = " ",
+        Icon = " ",
+        Desc = " "
     }),
     ShopTab = Window:Tab({
-        Title = "",
-        Icon = "",
-        Desc = ""
+        Title = " ",
+        Icon = " ",
+        Desc = " "
     }),
     FruitTab = Window:Tab({
-        Title = "",
-        Icon = "",
-        Desc = ""
+        Title = " ",
+        Icon = " ",
+        Desc = " "
     }),
     MiscDivider = Window:Divider(),
     MiscTab = Window:Tab({
-        Title = "",
-        Icon = "",
-        Desc = ""
+        Title = " ",
+        Icon = " ",
+        Desc = " "
     }),
     ServerTab = Window:Tab({
-        Title = "",
-        Icon = "",
-        Desc = ""
+        Title = " ",
+        Icon = " ",
+        Desc = " "
     })
 };
 Window:SelectTab(1);
@@ -448,6 +448,7 @@ elseif game.PlaceId == 4442272183 then
 elseif game.PlaceId == 7449423635 then
     World3 = true;
 end
+
 function CheckQuest()
     MyLevel = (game:GetService("Players")).LocalPlayer.Data.Level.Value;
     if World1 then
