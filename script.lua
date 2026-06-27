@@ -11,10 +11,10 @@ CleanUI("WindUI")
 CleanUI("FixMenuMobilePC")
 local WindUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/thienmf-rgb/NoNoDev/refs/heads/main/main.lua"))();
 local Window = WindUI:CreateWindow({
-    Title = " ",
-    Icon = " ",
-    Author = " ",
-    Folder = " ",
+    Title = "Nô Nô HUB",
+    Icon = "rbxassetid://115375388153325",
+    Author = "Owner: Thien~~",
+    Folder = "Nô Nô HUB",
     Size = UDim2.fromOffset(550, 300),
     Transparent = true,
     Theme = "Dark",
@@ -39,7 +39,7 @@ OpenButton.BackgroundTransparency = 0.4
 OpenButton.Position = UDim2.new(0, 5, 0.4, 0)
 OpenButton.Size = UDim2.new(0, 50, 0, 50)
 OpenButton.Font = Enum.Font.GothamBold
-OpenButton.Text = " "
+OpenButton.Text = "MENU"
 OpenButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 OpenButton.TextSize = 10
 OpenButton.Draggable = true
@@ -59,110 +59,110 @@ end)
 
 local Tabs = {
     InfoTab = Window:Tab({
-        Title = " ",
-        Icon = " ",
-        Desc = " "
+        Title = "Discord",
+        Icon = "info",
+        Desc = "Info Section"
     }),
     MainDivider = Window:Divider(),
     MainTab = Window:Tab({
-        Title = " ",
-        Icon = " ",
-        Desc = " "
+        Title = "Farming",
+        Icon = "rocket",
+        Desc = "Main Section"
     }),
     OthersTab = Window:Tab({
-        Title = " ",
-        Icon = " ",
-        Desc = " "
+        Title = "Others",
+        Icon = "crown",
+        Desc = "Farming Section"
     }),
     ItemsTab = Window:Tab({
-        Title = " ",
-        Icon = " ",
-        Desc = " "
+        Title = "Items",
+        Icon = "box",
+        Desc = "Items Section"
     }),
     SettingsTab = Window:Tab({
-        Title = " ",
-        Icon = " ",
-        Desc = " "
+        Title = "Settings",
+        Icon = "settings",
+        Desc = "Settings Section"
     }),
     PlayerDivider = Window:Divider(),
     LocalPlayerTab = Window:Tab({
-        Title = " ",
-        Icon = " ",
-        Desc = " "
+        Title = "Player",
+        Icon = "user",
+        Desc = "Local Player Section"
     }),
     StatsTab = Window:Tab({
-        Title = " ",
-        Icon = " ",
-        Desc = " "
+        Title = "Stats",
+        Icon = "sliders-horizontal",
+        Desc = "Stats Section"
     }),
     SeaDivider = Window:Divider(),
     SeaEventTab = Window:Tab({
-        Title = " ",
-        Icon = " ",
-        Desc = " "
+        Title = "Sea Event",
+        Icon = "anchor",
+        Desc = "Sea Event Section"
     }),
     SeaStackTab = Window:Tab({
-        Title = " ",
-        Icon = " ",
-        Desc = " "
+        Title = "Sea Stack",
+        Icon = "waves",
+        Desc = "Sea Stack Section"
     }),
     SeaSettingsTab = Window:Tab({
-        Title = " ",
-        Icon = " ",
-        Desc = " "
+        Title = "Sea Settings",
+        Icon = "cog",
+        Desc = "Sea Settings Section"
     }),
     AutoDivider = Window:Divider(),
     DragonDojoTab = Window:Tab({
-        Title = " ",
-        Icon = " ",
-        Desc = " "
+        Title = "Dragon Dojo",
+        Icon = "shield",
+        Desc = "Dragon Dojo Section"
     }),
     RaceTab = Window:Tab({
-        Title = " ",
-        Icon = " ",
-        Desc = " "
+        Title = "Race V4",
+        Icon = "bot",
+        Desc = "Race Section"
     }),
     CombatDivider = Window:Divider(),
     CombatTab = Window:Tab({
-        Title = " ",
-        Icon = " ",
-        Desc = " "
+        Title = "Combat",
+        Icon = "sword",
+        Desc = "Combat Section"
     }),
     RaidTab = Window:Tab({
-        Title = " ",
-        Icon = " ",
-        Desc = " "
+        Title = "Raid",
+        Icon = "door-open",
+        Desc = "Raid Section"
     }),
     EspTab = Window:Tab({
-        Title = " ",
-        Icon = " ",
-        Desc = " "
+        Title = "Esp",
+        Icon = "eye",
+        Desc = "Esp Section"
     }),
     TeleportTab = Window:Tab({
-        Title = " ",
-        Icon = " ",
-        Desc = " "
+        Title = "Teleport",
+        Icon = "map-pinned",
+        Desc = "Teleport Section"
     }),
     ShopTab = Window:Tab({
-        Title = " ",
-        Icon = " ",
-        Desc = " "
+        Title = "Shop",
+        Icon = "shopping-cart",
+        Desc = "Shop Section"
     }),
     FruitTab = Window:Tab({
-        Title = " ",
-        Icon = " ",
-        Desc = " "
+        Title = "Fruit",
+        Icon = "apple",
+        Desc = "Fruit Section"
     }),
     MiscDivider = Window:Divider(),
     MiscTab = Window:Tab({
-        Title = " ",
-        Icon = " ",
-        Desc = " "
+        Title = "Misc",
+        Icon = "layout-grid",
+        Desc = "Misc Section"
     }),
     ServerTab = Window:Tab({
-        Title = " ",
-        Icon = " ",
-        Desc = " "
+        Title = "Server",
+        Icon = "server",
+        Desc = "Server Section"
     })
 };
 Window:SelectTab(1);
