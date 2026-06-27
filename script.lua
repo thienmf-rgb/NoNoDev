@@ -2465,7 +2465,7 @@ spawn(function()
 end);
 DiscordServerParagraph = Tabs.InfoTab:Paragraph({
     Title = "Discord Server",
-    Desc = "Link Discord Nullix!",
+    Desc = "Link Discord Nô Nô!",
     TextXAlignment = "Left",
     Buttons = {{
         Title = "Copy Link Discord",
@@ -2481,7 +2481,7 @@ DiscordServerParagraph = Tabs.InfoTab:Paragraph({
     }}
 });
 DiscordServerParagraph1 = Tabs.InfoTab:Paragraph({
-    Title = Nullix",
+    Title = "Nô Nô",
     Desc = "Nô Nô Community",
     TextXAlignment = "Left",
     Buttons = {{
