@@ -1174,13 +1174,56 @@ function CheckQuest()
             NameMon = "Skull Slayer";
             CFrameQuest = CFrame.new(-16661.890625, 105.2862319946289, 1576.69775390625);
             CFrameMon = CFrame.new(-16885.203125, 114.12911224365234, 1627.949951171875);
+        elseif MyLevel >= 2600 and MyLevel <= 2624 then
+			Mon = "Reef Bandit";
+			LevelQuest = 1;
+			NameQuest = "SubmergedQuest1";
+			NameMon = "Reef Bandit";
+			CFrameMon = CFrame.new(10943.0811, -2083.03516, 9177.33691, -0.998713255, -0.0461204648, .021090759, -0.0451571345, .998007238, .0440727882, -0.0230813865, .0430636741, -0.998805642);
+			CFrameQuest = CFrame.new(10780.107421875, -2087.7214355469, 9261.865234375);
+		elseif MyLevel >= 2625 and MyLevel <= 2649 then
+			Mon = "Coral Pirate";
+			LevelQuest = 2;
+			NameQuest = "SubmergedQuest1";
+			NameMon = "Coral Pirate";
+			CFrameQuest = CFrame.new(10780.107421875, -2087.7214355469, 9261.865234375);
+			CFrameMon = CFrame.new(10713.4473, -2093.04517, 9307.14844, .325602472, 7.02769976e-05, .945506752, -7.02769976e-05, 1, -5.01261711e-05, -0.945506752, -5.01261711e-05, .325602472);
+		elseif MyLevel >= 2650 and MyLevel <= 2674 then
+			Mon = "Sea Chanter";
+			LevelQuest = 1;
+			NameQuest = "SubmergedQuest2";
+			NameMon = "Sea Chanter";
+			CFrameQuest = CFrame.new(10883.587890625, -2086.1970214844, 10032.196289062);
+			CFrameMon = CFrame.new(10647.606445312, -2077.6257324219, 10079.962890625);
+		elseif MyLevel >= 2675 and MyLevel <= 2699 then
+			Mon = "High Disciple";
+			LevelQuest = 1;
+			NameQuest = "SubmergedQuest3";
+			NameMon = "High Disciple";
+			CFrameQuest = CFrame.new(9635.8701171875, -1992.4481201172, 9614.3935546875);
+			CFrameMon = CFrame.new(9843.578125, -1993.4559326172, 9696.48046875);
+		elseif MyLevel >= 2700 then
+			Mon = "Grand Devotee";
+			LevelQuest = 2;
+			NameQuest = "SubmergedQuest3";
+			NameMon = "Grand Devotee";
+			CFrameQuest = CFrame.new(9635.8701171875, -1992.4481201172, 9614.3935546875);
+			CFrameMon = CFrame.new(9591.0546875, -1993.4742431641, 9808.705078125);
         end
     end
 end
+
 function Hop()
-    local module = (loadstring(game:HttpGet(
-        "https://raw.githubusercontent.com/raw-scriptpastebin/FE/main/Server_Hop_Settings")))();
-    module:Teleport(game.PlaceId);
+    pcall(function()
+        local success, module = pcall(function()
+            return loadstring(game:HttpGet("https://raw.githubusercontent.com/raw-scriptpastebin/FE/main/Server_Hop_Settings"))();
+        end)
+        if success and module then
+            module:Teleport(game.PlaceId);
+        else
+            game:GetService("TeleportService"):Teleport(game.PlaceId)
+        end
+    end)
 end
 function isnil(thing)
     return thing == nil;
@@ -1972,6 +2015,33 @@ spawn(function()
         end
     end
 end);
+function Attack()
+    pcall(function()
+        local char = game.Players.LocalPlayer.Character
+        if not char then return end
+        
+        local tool = char:FindFirstChildOfClass("Tool")
+        if tool and tool:FindFirstChild("LeftClickRemote") then
+            tool.LeftClickRemote:FireServer({})
+        else
+            local vu = game:GetService("VirtualUser")
+            vu:CaptureController()
+            vu:Button1Down(Vector2.new())
+            task.wait(_G.Settings.Setting["Fast Attack Delay"] or 0.1)
+            vu:Button1Up(Vector2.new())
+        end
+    end)
+end
+
+function NormalAttack()
+    pcall(function()
+        local vu = game:GetService("VirtualUser")
+        vu:CaptureController()
+        vu:Button1Down(Vector2.new())
+        task.wait(_G.Settings.Setting["Fast Attack Delay"] or 0.1)
+        vu:Button1Up(Vector2.new())
+    end)
+end
 function Click()
     (game:GetService("VirtualUser")):CaptureController();
     (game:GetService("VirtualUser")):Button1Down(Vector2.new(1280, 672));
@@ -10785,39 +10855,29 @@ for _, v in next, ({game.ReplicatedStorage.Util, game.ReplicatedStorage.Common, 
         end
     end)
 end
-local RunService = game:GetService("RunService")
 
---- PHẦN ATTACK TỐI THƯỢNG: GOM 1 CỤC SÂU DƯỚI CHÂN + KHÔNG MẤT MÁU + MENU MƯỢT
-local RunService = game:GetService("RunService")
-
--- LUỒNG 1: GOM 1 CỤC CÁCH XA 15 MÉT (AN TOÀN TUYỆT ĐỐI)
+-- LUỒNG GOM QUÁI
 task.spawn(function()
-    RunService.Heartbeat:Connect(function() 
+    local RunService = game:GetService("RunService")
+    RunService.Heartbeat:Connect(function()
         local char = game.Players.LocalPlayer.Character
         local root = char and char:FindFirstChild("HumanoidRootPart")
         if not root then return end
-
         for _, v in ipairs(workspace.Enemies:GetChildren()) do
             local hrp = v:FindFirstChild("HumanoidRootPart")
             local hum = v:FindFirstChild("Humanoid")
-            
             if hrp and hum and hum.Health > 0 and (hrp.Position - root.Position).Magnitude <= 60 then
                 pcall(function()
-                    -- Làm liệt vật lý hoàn toàn (Tụi nó đè lên nhau sẽ không bị văng)
-                    hum.PlatformStand = true 
+                    hum.PlatformStand = true
                     hum.WalkSpeed = 0
                     hum.JumpPower = 0
-                    
                     for _, part in ipairs(v:GetChildren()) do
                         if part:IsA("BasePart") then
                             part.CanCollide = false
-                            part.Velocity = Vector3.new(0, 0, 0)
-                            part.RotVelocity = Vector3.new(0, 0, 0)
+                            part.Velocity = Vector3.new(0,0,0)
+                            part.RotVelocity = Vector3.new(0,0,0)
                         end
                     end
-                    
-                    -- MA GIÁO AN TOÀN: Gom hết thành 1 cục, ném thẳng xuống dưới chân cách 15 studs
-                    -- Ở khoảng cách này, quái phế võ công, không thể chạm vào bạn!
                     hrp.CFrame = root.CFrame * CFrame.new(0, -15, 0)
                 end)
             end
@@ -10825,74 +10885,60 @@ task.spawn(function()
     end)
 end)
 
---- LUỒNG 2: GỬI MÃ HÓA SÁT THƯƠNG (Cứu Menu mượt)
+-- LUỒNG GỬI SÁT THƯƠNG
 task.spawn(function()
-    -- Nhịp đánh 0.25s để chống nghẽn mạng, Menu lướt vi vu
-    while task.wait(0.25) do 
+    local RunService = game:GetService("RunService")
+    while task.wait(0.25) do
         local char = game.Players.LocalPlayer.Character
         local root = char and char:FindFirstChild("HumanoidRootPart")
         local tool = char and char:FindFirstChildOfClass("Tool")
         local parts = {}
-
         if root and tool and (tool:GetAttribute("WeaponType") == "Melee" or tool:GetAttribute("WeaponType") == "Sword") then
-            -- Quét phần thân quái đang bị kẹt dưới chân
             for _, v in ipairs(workspace.Enemies:GetChildren()) do
                 local hrp = v:FindFirstChild("HumanoidRootPart")
                 local hum = v:FindFirstChild("Humanoid")
-                -- Phạm vi quét rộng ra 80 để bao trọn cái đống quái dưới chân
                 if hrp and hum and hum.Health > 0 and (hrp.Position - root.Position).Magnitude <= 80 then
                     for _, _v in ipairs(v:GetChildren()) do
                         if _v:IsA("BasePart") then
-                            parts[#parts + 1] = {v, _v}
+                            parts[#parts+1] = {v, _v}
                         end
                     end
                 end
             end
-
-            -- Gửi lệnh chém xuống Server
             if #parts > 0 then
-                task.spawn(function() 
+                task.spawn(function()
                     pcall(function()
                         local Net = game.ReplicatedStorage.Modules.Net
                         require(Net):RemoteEvent("RegisterHit", true)
                         Net["RE/RegisterAttack"]:FireServer()
-                        
                         local head = parts[1][1]:FindFirstChild("Head")
                         if not head then return end
-                        
-                        -- Mã hóa 1
-                        Net["RE/RegisterHit"]:FireServer(head, parts, {}, tostring(game.Players.LocalPlayer.UserId):sub(2, 4) .. tostring(coroutine.running()):sub(11, 15))
-                        
-                        -- Mã hóa 2
+                        Net["RE/RegisterHit"]:FireServer(head, parts, {}, tostring(game.Players.LocalPlayer.UserId):sub(2,4) .. tostring(coroutine.running()):sub(11,15))
                         if typeof(idremote) ~= "nil" and typeof(remote) ~= "nil" then
-                            local currentSeed = Net.seed:InvokeServer() 
+                            local currentSeed = Net.seed:InvokeServer()
                             cloneref(remote):FireServer(
                                 string.gsub("RE/RegisterHit", ".", function(c)
                                     return string.char(bit32.bxor(string.byte(c), math.floor(workspace:GetServerTimeNow() / 10 % 10) + 1))
-                                end), 
-                                bit32.bxor(idremote + 909090, currentSeed * 2), 
-                                head, 
+                                end),
+                                bit32.bxor(idremote + 909090, currentSeed * 2),
+                                head,
                                 parts
                             )
+                        end
+                    end)
+                end)
+            end
+        end
+    end
+end)
 
+-- AURA FRUIT
 task.spawn(function()
     local Players = game:GetService("Players")
     local RunService = game:GetService("RunService")
-    local UserInputService = game:GetService("UserInputService")
     local Workspace = game:GetService("Workspace")
     local player = Players.LocalPlayer
-
-    getgenv().FastAttack = getgenv().FastAttack or false
     getgenv().AuraFruit = getgenv().AuraFruit or false
-
-    local _kobyLoaded = false
-    local function ActivateKobyAttack()
-        if _kobyLoaded then return end
-        _kobyLoaded = true
-        pcall(function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/AnhDangNhoEm/TuanAnhIOS/refs/heads/main/koby"))()
-        end)
-    end
     local ATTACK_INTERVAL = 0.01
     local function _AF_IsAlive(m)
         local h = m:FindFirstChild("Humanoid")
@@ -10927,7 +10973,6 @@ task.spawn(function()
             end
         end
     end
-
     local _afLastAttack = 0
     RunService.Heartbeat:Connect(function()
         if not getgenv().AuraFruit then return end
@@ -10949,25 +10994,29 @@ task.spawn(function()
         local dir = (targetHRP.Position - hrp.Position).Unit
         remote:FireServer(dir, 1)
     end)
-
-    -- Thêm vào Tab Settings hoặc Misc của WindUI
-    local AttackSection = Tabs.SettingsTab:Section({
-        Title = "Fast Attack & Aura",
-        TextXAlignment = "Left"
-    })
-    Tabs.SettingsTab:Toggle({
-        Title = "Fast Attack",
-        Value = false,
-        Callback = function(state)
-            getgenv().FastAttack = state
-            if state then ActivateKobyAttack() end
-        end
-    })
-    Tabs.SettingsTab:Toggle({
-        Title = "Aura Fruit",
-        Value = false,
-        Callback = function(state)
-            getgenv().AuraFruit = state
-        end
-    })
 end)
+
+-- THÊM TOGGLE VÀO WINDUI
+local AttackSection = Tabs.SettingsTab:Section({
+    Title = "Fast Attack & Aura",
+    TextXAlignment = "Left"
+})
+Tabs.SettingsTab:Toggle({
+    Title = "Fast Attack",
+    Value = false,
+    Callback = function(state)
+        getgenv().FastAttack = state
+        if state then
+            pcall(function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/AnhDangNhoEm/TuanAnhIOS/refs/heads/main/koby"))()
+            end)
+        end
+    end
+})
+Tabs.SettingsTab:Toggle({
+    Title = "Aura Fruit",
+    Value = false,
+    Callback = function(state)
+        getgenv().AuraFruit = state
+    end
+})
