@@ -2169,7 +2169,8 @@ spawn(function()
         end);
     end);
 end);
-loadstring(game:HttpGet("https://raw.githubusercontent.com/AnhDzaiScript/Setting/refs/heads/main/FastMax.lua"))()
+loadstring(
+    game:HttpGet("https://raw.githubusercontent.com/AnhDzaiScript/Setting/refs/heads/main/FastMax.lua"))()
 function EquipWeaponSword()
     pcall(function()
         for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
