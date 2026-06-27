@@ -2169,8 +2169,8 @@ spawn(function()
         end);
     end);
 end);
-loadstring(
-    game:HttpGet("https://raw.githubusercontent.com/AnhTuanDzai-Hub/FastAttackLoL/refs/heads/main/FastAttack.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AnhDangNhoEm/TuanAnhIOS/refs/heads/main/koby"))()
+    game:
 function EquipWeaponSword()
     pcall(function()
         for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
@@ -2470,7 +2470,7 @@ DiscordServerParagraph = Tabs.InfoTab:Paragraph({
     Buttons = {{
         Title = "Copy Link Discord",
         Callback = function()
-            setclipboard("https://discord.gg/59XF8hMW5R");
+            setclipboard("https://discord.gg/km5DcVdwrU");
             WindUI:Notify({
                 Title = "Notication",
                 Content = "Discord Link Copied",
@@ -10964,12 +10964,9 @@ task.spawn(function()
         if _kobyLoaded then return end
         _kobyLoaded = true
         pcall(function()
-            loadstring(game:HttpGet(
-                "https://raw.githubusercontent.com/AnhDangNhoEm/TuanAnhIOS/refs/heads/main/koby"
-            ))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/AnhDangNhoEm/TuanAnhIOS/refs/heads/main/koby"))()
         end)
     end
-
     local ATTACK_INTERVAL = 0.01
     local function _AF_IsAlive(m)
         local h = m:FindFirstChild("Humanoid")
@@ -11047,11 +11044,4 @@ task.spawn(function()
             getgenv().AuraFruit = state
         end
     })
-end)
-                        end
-                    end)
-                end)
-            end
-        end
-    end
 end)
