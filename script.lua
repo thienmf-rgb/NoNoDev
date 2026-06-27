@@ -4713,7 +4713,7 @@ FarmDistanceSlider = Tabs.SettingsTab:Slider({
         Default = _G.Settings.Setting["Farm Distance"]
     },
     Callback = function(value)
-        _G.Settings.Setting["Farm Distance"] = value;
+        _G.Settings.Setting["Farm Distance"] = 10;
     end
 });
 PlayerTweenSpeedSlider = Tabs.SettingsTab:Slider({
@@ -4725,7 +4725,7 @@ PlayerTweenSpeedSlider = Tabs.SettingsTab:Slider({
         Default = _G.Settings.Setting["Player Tween Speed"]
     },
     Callback = function(value)
-        _G.Settings.Setting["Player Tween Speed"] = value;
+        _G.Settings.Setting["Player Tween Speed"] = 200;
     end
 });
 BringMobToggle = Tabs.SettingsTab:Toggle({
@@ -7066,7 +7066,7 @@ AutoLawRaidToggle = Tabs.RaidTab:Toggle({
     Title = "Auto Law Raid",
     Value = _G.Settings.Raid["Law Raid"],
     Callback = function(state)
-        _G.Settings.Raid["Law Raid"] = value;
+        _G.Settings.Raid["Law Raid"] = state;
         StopTween(_G.Settings.Raid["Law Raid"]);
         (getgenv()).SaveSetting();
     end
@@ -10948,6 +10948,106 @@ task.spawn(function()
                                 head, 
                                 parts
                             )
+                -- Fast Attack + Aura Fruit UI (by Topi1)
+task.spawn(function()
+    local Players = game:GetService("Players")
+    local RunService = game:GetService("RunService")
+    local UserInputService = game:GetService("UserInputService")
+    local Workspace = game:GetService("Workspace")
+    local player = Players.LocalPlayer
+
+    getgenv().FastAttack = getgenv().FastAttack or false
+    getgenv().AuraFruit = getgenv().AuraFruit or false
+
+    local _kobyLoaded = false
+    local function ActivateKobyAttack()
+        if _kobyLoaded then return end
+        _kobyLoaded = true
+        pcall(function()
+            loadstring(game:HttpGet(
+                "https://raw.githubusercontent.com/AnhDangNhoEm/TuanAnhIOS/refs/heads/main/koby"
+            ))()
+        end)
+    end
+
+    local ATTACK_INTERVAL = 0.01
+    local function _AF_IsAlive(m)
+        local h = m:FindFirstChild("Humanoid")
+        return h and h.Health > 0
+    end
+    local function _AF_GetTargets()
+        local char = player.Character
+        if not char then return {} end
+        local list = {}
+        local function Scan(folder)
+            for _, v in pairs(folder:GetChildren()) do
+                if v ~= char and v:FindFirstChild("HumanoidRootPart") and _AF_IsAlive(v) then
+                    table.insert(list, v)
+                end
+            end
+        end
+        if Workspace:FindFirstChild("Enemies") then Scan(Workspace.Enemies) end
+        if Workspace:FindFirstChild("Characters") then Scan(Workspace.Characters) end
+        return list
+    end
+    local function _AF_GetFruitTool()
+        local char = player.Character
+        local backpack = player:FindFirstChild("Backpack")
+        if char then
+            for _, v in pairs(char:GetChildren()) do
+                if v:IsA("Tool") and v.ToolTip == "Blox Fruit" then return v end
+            end
+        end
+        if backpack then
+            for _, v in pairs(backpack:GetChildren()) do
+                if v:IsA("Tool") and v.ToolTip == "Blox Fruit" then return v end
+            end
+        end
+    end
+
+    local _afLastAttack = 0
+    RunService.Heartbeat:Connect(function()
+        if not getgenv().AuraFruit then return end
+        local now = tick()
+        if now - _afLastAttack < ATTACK_INTERVAL then return end
+        _afLastAttack = now
+        local targets = _AF_GetTargets()
+        if #targets == 0 then return end
+        local char = player.Character
+        if not char then return end
+        local hrp = char:FindFirstChild("HumanoidRootPart")
+        if not hrp then return end
+        local fruit = _AF_GetFruitTool()
+        if not fruit then return end
+        local remote = fruit:FindFirstChild("LeftClickRemote")
+        if not remote then return end
+        local targetHRP = targets[1]:FindFirstChild("HumanoidRootPart")
+        if not targetHRP then return end
+        local dir = (targetHRP.Position - hrp.Position).Unit
+        remote:FireServer(dir, 1)
+    end)
+
+    -- Thêm vào Tab Settings hoặc Misc của WindUI
+    local AttackSection = Tabs.SettingsTab:Section({
+        Title = "Fast Attack & Aura",
+        TextXAlignment = "Left"
+    })
+    Tabs.SettingsTab:Toggle({
+        Title = "Fast Attack",
+        Value = false,
+        Callback = function(state)
+            getgenv().FastAttack = state
+            if state then ActivateKobyAttack() end
+        end
+    })
+    Tabs.SettingsTab:Toggle({
+        Title = "Aura Fruit",
+        Value = false,
+        Callback = function(state)
+            getgenv().AuraFruit = state
+        end
+    })
+end)
                         end
                     end)
                 end)
