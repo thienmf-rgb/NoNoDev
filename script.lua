@@ -11,10 +11,10 @@ CleanUI("WindUI")
 CleanUI("FixMenuMobilePC")
 local WindUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/thienmf-rgb/NoNoDev/refs/heads/main/main.lua"))();
 local Window = WindUI:CreateWindow({
-    Title = "Nô Nô HUB",
-    Icon = "rbxassetid://115375388153325",
-    Author = "Owner: Thien~~",
-    Folder = "Nô Nô HUB",
+    Title = "",
+    Icon = "",
+    Author = "",
+    Folder = "",
     Size = UDim2.fromOffset(550, 300),
     Transparent = true,
     Theme = "Dark",
@@ -36,137 +36,133 @@ OpenButton.Name = "OpenButton"
 OpenButton.Parent = ScreenGui
 OpenButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 OpenButton.BackgroundTransparency = 0.4
-OpenButton.Position = UDim2.new(0, 5, 0.4, 0) -- Nằm sát mép trái màn hình
-OpenButton.Size = UDim2.new(0, 50, 0, 50) -- Nút tròn vừa phải
+OpenButton.Position = UDim2.new(0, 5, 0.4, 0)
+OpenButton.Size = UDim2.new(0, 50, 0, 50)
 OpenButton.Font = Enum.Font.GothamBold
-OpenButton.Text = "MENU"
+OpenButton.Text = ""
 OpenButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 OpenButton.TextSize = 10
-OpenButton.Draggable = true -- Mobi hay PC đều kéo đi được nếu vướng
+OpenButton.Draggable = true
 
 UICorner.CornerRadius = UDim.new(1, 0)
 UICorner.Parent = OpenButton
 
--- Click nút này là hiện/ẩn Menu
 OpenButton.MouseButton1Click:Connect(function()
     Window:Toggle()
 end)
 
--- 5. PHÍM TẮT RIÊNG CHO PC (Ctrl trái)
 game:GetService("UserInputService").InputBegan:Connect(function(input, processed)
     if not processed and input.KeyCode == Enum.KeyCode.LeftControl then
         Window:Toggle()
     end
 end)
 
--- Tắt cái nút mặc định hay bị lỗi của thư
-
 local Tabs = {
     InfoTab = Window:Tab({
-        Title = "Discord",
-        Icon = "info",
-        Desc = "Info Section"
+        Title = "",
+        Icon = "",
+        Desc = ""
     }),
     MainDivider = Window:Divider(),
     MainTab = Window:Tab({
-        Title = "Farming",
-        Icon = "rocket",
-        Desc = "Main Section"
+        Title = "",
+        Icon = "",
+        Desc = ""
     }),
     OthersTab = Window:Tab({
-        Title = "Others",
-        Icon = "crown",
-        Desc = "Farming Section"
+        Title = "",
+        Icon = "",
+        Desc = ""
     }),
     ItemsTab = Window:Tab({
-        Title = "Items",
-        Icon = "box",
-        Desc = "Items Section"
+        Title = "",
+        Icon = "",
+        Desc = ""
     }),
     SettingsTab = Window:Tab({
-        Title = "Settings",
-        Icon = "settings",
-        Desc = "Settings Section"
+        Title = "",
+        Icon = "",
+        Desc = ""
     }),
     PlayerDivider = Window:Divider(),
     LocalPlayerTab = Window:Tab({
-        Title = "Player",
-        Icon = "user",
-        Desc = "Local Player Section"
+        Title = "",
+        Icon = "",
+        Desc = ""
     }),
     StatsTab = Window:Tab({
-        Title = "Stats",
-        Icon = "sliders-horizontal",
-        Desc = "Stats Section"
+        Title = "",
+        Icon = "",
+        Desc = ""
     }),
     SeaDivider = Window:Divider(),
     SeaEventTab = Window:Tab({
-        Title = "Sea Event",
-        Icon = "anchor",
-        Desc = "Sea Event Section"
+        Title = "",
+        Icon = "",
+        Desc = ""
     }),
     SeaStackTab = Window:Tab({
-        Title = "Sea Stack",
-        Icon = "waves",
-        Desc = "Sea Stack Section"
+        Title = "",
+        Icon = "",
+        Desc = ""
     }),
     SeaSettingsTab = Window:Tab({
-        Title = "Sea Settings",
-        Icon = "cog",
-        Desc = "Sea Settings Section"
+        Title = "",
+        Icon = "",
+        Desc = ""
     }),
     AutoDivider = Window:Divider(),
     DragonDojoTab = Window:Tab({
-        Title = "Dragon Dojo",
-        Icon = "shield",
-        Desc = "Dragon Dojo Section"
+        Title = "",
+        Icon = "",
+        Desc = ""
     }),
     RaceTab = Window:Tab({
-        Title = "Race V4",
-        Icon = "bot",
-        Desc = "Race Section"
+        Title = "",
+        Icon = "",
+        Desc = ""
     }),
     CombatDivider = Window:Divider(),
     CombatTab = Window:Tab({
-        Title = "Combat",
-        Icon = "sword",
-        Desc = "Combat Section"
+        Title = "",
+        Icon = "",
+        Desc = ""
     }),
     RaidTab = Window:Tab({
-        Title = "Raid",
-        Icon = "door-open",
-        Desc = "Raid Section"
+        Title = "",
+        Icon = "",
+        Desc = ""
     }),
     EspTab = Window:Tab({
-        Title = "Esp",
-        Icon = "eye",
-        Desc = "Esp Section"
+        Title = "",
+        Icon = "",
+        Desc = ""
     }),
     TeleportTab = Window:Tab({
-        Title = "Teleport",
-        Icon = "map-pinned",
-        Desc = "Teleport Section"
+        Title = "",
+        Icon = "",
+        Desc = ""
     }),
     ShopTab = Window:Tab({
-        Title = "Shop",
-        Icon = "shopping-cart",
-        Desc = "Shop Section"
+        Title = "",
+        Icon = "",
+        Desc = ""
     }),
     FruitTab = Window:Tab({
-        Title = "Fruit",
-        Icon = "apple",
-        Desc = "Fruit Section"
+        Title = "",
+        Icon = "",
+        Desc = ""
     }),
     MiscDivider = Window:Divider(),
     MiscTab = Window:Tab({
-        Title = "Misc",
-        Icon = "layout-grid",
-        Desc = "Misc Section"
+        Title = "",
+        Icon = "",
+        Desc = ""
     }),
     ServerTab = Window:Tab({
-        Title = "Server",
-        Icon = "server",
-        Desc = "Server Section"
+        Title = "",
+        Icon = "",
+        Desc = ""
     })
 };
 Window:SelectTab(1);
@@ -784,7 +780,7 @@ function CheckQuest()
             NameMon = "Magma Ninja";
             CFrameQuest = CFrame.new(-5428.03174, 15.0622921, -5299.43457, -0.882952213, 0, 0.469463557, 0, 1, 0,
                 -0.469463557, 0, -0.882952213);
-            CFrameMon = CFrame.new(-5449.6728515625, 76.65874481201172, -5808.20068359375);
+            CFrameMon = CFrame.new(-5449.6728515625, 76.65874481101272, -5808.20068359375);
         elseif MyLevel == 1200 or MyLevel <= 1249 then
             Mon = "Lava Pirate";
             LevelQuest = 2;
