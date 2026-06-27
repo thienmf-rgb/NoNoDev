@@ -12,7 +12,7 @@ CleanUI("FixMenuMobilePC")
 local WindUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/thienmf-rgb/NoNoDev/refs/heads/main/main.lua"))();
 local Window = WindUI:CreateWindow({
     Title = "Nô Nô HUB",
-    Icon = "rbxassetid://115375388153325",
+    Icon = "https://chatgpt.com/backend-api/estuary/content?id=file_000000002f3471f8932f437eb5b0f209&ts=495153&p=fs&cid=1&sig=a89048d213f3fd37fbc470d5d85c0b0ef2e641494f0510fa0c84d1a9022700b9&v=0",
     Author = "Owner: Thien~~",
     Folder = "Nô Nô HUB",
     Size = UDim2.fromOffset(550, 300),
@@ -11000,7 +11000,7 @@ local AttackSection = Tabs.SettingsTab:Section({
 })
 Tabs.SettingsTab:Toggle({
     Title = "Fast Attack",
-    Value = false,
+    Value = true,
     Callback = function(state)
         getgenv().FastAttack = state
         if state then
