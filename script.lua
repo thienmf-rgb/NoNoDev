@@ -2169,8 +2169,7 @@ spawn(function()
         end);
     end);
 end);
-loadstring(game:HttpGet("https://raw.githubusercontent.com/AnhDangNhoEm/TuanAnhIOS/refs/heads/main/koby"))()
-    game:
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AnhDzaiScript/Setting/refs/heads/main/FastMax.lua"))()
 function EquipWeaponSword()
     pcall(function()
         for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
@@ -10948,7 +10947,7 @@ task.spawn(function()
                                 head, 
                                 parts
                             )
-                -- Fast Attack + Aura Fruit UI (by Topi1)
+
 task.spawn(function()
     local Players = game:GetService("Players")
     local RunService = game:GetService("RunService")
